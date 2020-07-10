@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#display-container{
+    background-color: skyblue;
+}
+
+.city-info{
+    padding: 0 5px;
+    font-size: 18px;
+}
+
+#uv {
+    color: white;
+    width: 25%;
+}
+
+.low {
+    background-color: green;
+}
+
+.moderate {
+    background-color: yellow;
+}
+
+.high {
+    background-color:orange;
+}
+
+.very-high {
+    background-color: red;
+}
+
+.extreme {
+    background-color: purple;
+}
+
+.hidden {
+    display: none;
+}

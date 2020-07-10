@@ -1,25 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />   
-    <link rel="stylesheet" href="assets/css/style.css"/>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
+
 <body>
     <header>
 
     </header>
-    
+
     <main>
+        <div class="container mw-100">
+            <!-- Title Area -->
+            <div class="row">
+                <h1 class="col-12 bg-dark text-white text-center">Weather Dashboard</h1>
+            </div>
+            <!-- Search Area -->
+            <div class="row">
+                <div class="col-4 border border-dark" id="search-container">
+                    <label for="city">Search for a city:</label>
+                    <form>
+                        <div class="form-group">
+                            <div class="d-inline">
+                                <input type="text" class="search-box" id="city">
+                                <button class="btn btn-primary"><span class="oi oi-magnifying-glass"></span></button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div id="history">
+
+                    </div>
+                </div>
+                <!-- Display area -->
+                <div class="col-8 border border-dark" id="display-container">
+                    <!-- Row for current weather -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex city-wrapper">
+                            <p class="city-info" id="name"></p>
+                                <span class="city-info" id="date"></span>
+                                <img id="icon"></img>
+                            </div>
+                            <p class="city-info" id="temp"></p>
+                            <p class="city-info" id="humidity"></p>
+                            <p class="city-info" id="wind"></p>
+                            <p class="city-info" id="uv"></p>
+                        </div>
+                    </div>
+                    <!-- Row for 5-day forcast -->
+                     <h3 class="row hidden" id="five-day-header">5-Day Forecast:</h3>
+                    <div class="row" id="five-day">
+                        <!-- days created dynamically? -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
+
 </html>
