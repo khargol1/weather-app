@@ -40,3 +40,10 @@ body {
 .hidden {
     display: none;
 }
+
+.icon-size{
+    
+    width: 50px;
+    margin: auto;
+    
+}

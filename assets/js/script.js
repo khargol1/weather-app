@@ -7,6 +7,7 @@ $(".btn").click(getCity);
 function getCity(event) {
     event.preventDefault();
     $("#uv").removeClass();
+    
     let city = $("#city").val().trim();
     $("#city").val("");
     getCurrentWeather(city);
@@ -96,14 +97,11 @@ function getFiveDayForecast(city) {
 
 function displayFiveDay(data) {
     $('#five-day-header').removeClass('hidden');
-    console.log(data);
-    let time = moment('DD/MM/YYYY');
     
-    //let iconUrl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-
     //grab the container it goes in
     let fiveDay = document.getElementById('five-day');
-    //for(let i = 1; i < 6; i++){
+    fiveDay.innerHTML= '';
+    for(let i = 1; i < 6; i++){
     //make a new div "CARD"
     let card = document.createElement("div");
     card.classList = "card"
@@ -113,13 +111,14 @@ function displayFiveDay(data) {
     //add class of card-header
     date.classList = 'card-header'
     //add date to inner html
-    date.textContent = time.add(1, 'days');//date not working
+    date.textContent = moment().add(i, 'days').format('MM/DD/YYYY');//date not working
     //append to CARD
     card.appendChild(date);
     //create new img element
     let icon = document.createElement("img");
     //update and grab icon using iconUrl
-    icon.setAttribute('src', "http://openweathermap.org/img/w/" + data.daily[0].weather[0].icon + ".png");
+    icon.setAttribute('src', "http://openweathermap.org/img/w/" + data.daily[i].weather[0].icon + ".png");
+    icon.setAttribute('style', 'width: 50px; margin: auto');
     //append to CARD
     card.appendChild(icon);
     //create new p element
@@ -127,7 +126,7 @@ function displayFiveDay(data) {
     //add class card-text
     temp.addClass = 'card-text'
     //add temp for the day to inner html
-    temp.textContent = data.daily[0].temp.max;
+    temp.textContent ="Temp: " + Math.round(data.daily[i].temp.max);
     //append to CARD
     card.appendChild(temp);
     //create another p element
@@ -135,10 +134,10 @@ function displayFiveDay(data) {
     //class card-text
     humidity.addClass = 'card-text';
     //add humidity to inner html
-    humidity.textContent = data.daily[0].humidity
+    humidity.textContent = "Humidity: " + data.daily[i].humidity
     //apend to CARD
     card.appendChild(humidity);
     //append CARD to container
     fiveDay.appendChild(card);
-    //}//end for loop
+    }//end for loop
 }
