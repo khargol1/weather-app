@@ -1,18 +1,68 @@
-console.log("Connected");
 
+let history = [];
 const apiKey = "da20f084ab1f7b27369c4871773f5df7";
+let inList = [];
 
 $(".btn").click(getCity);
+$("#history").on("click", pastSearch);
 
 function getCity(event) {
     event.preventDefault();
     $("#uv").removeClass();
-    
     let city = $("#city").val().trim();
     $("#city").val("");
-    getCurrentWeather(city);
-    //getFiveDayForecast(city);
+    getCurrentWeather(city); //asynch call
+    addSearchHistory(city); //adds to local
+    createSearchHistory(city);//display on page
 }
+
+function addSearchHistory(city){
+    if(!history.includes(city)){
+    history.push(city);
+    localStorage.setItem('city-history', JSON.stringify(history));
+}
+}
+
+function pastSearch(event){
+    $("#city").val(event.target.innerHTML);
+    getCity(event);
+}
+
+function createSearchHistory(city){
+    if(inList.includes(city)){
+        //do nothing
+    }else{
+
+    inList.push(city);
+    
+    //find container
+    let historyEl = document.getElementById('history');
+    //create a new p element
+    let newHistoryEl = document.createElement('p');
+    //give it a class of history-item
+    newHistoryEl.classList = 'history-item border rounded';
+    //set text content to city
+    newHistoryEl.textContent = city;
+    //attach to page
+    historyEl.prepend(newHistoryEl);
+    
+
+}
+}
+
+function onLoad(){
+    if("city-history" in localStorage){
+        history = JSON.parse(localStorage.getItem("city-history"));
+        //only keep last 10 of the searches
+        while(history.length > 10){
+            history.shift();
+        }
+        for(let i = 0; i < history.length; i++){
+            createSearchHistory(history[i]);
+        }
+    }
+}
+
 
 function getCurrentWeather(city) {
     const apiUrlCurent = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
@@ -141,3 +191,5 @@ function displayFiveDay(data) {
     fiveDay.appendChild(card);
     }//end for loop
 }
+
+onLoad();

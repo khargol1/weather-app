@@ -15,24 +15,20 @@
 </head>
 
 <body>
-    <header>
-
-    </header>
-
     <main>
-        <div class="container mw-100">
+        <div class="container ">
             <!-- Title Area -->
             <div class="row">
-                <h1 class="col-12 bg-dark text-white text-center">Weather Dashboard</h1>
+                <h1 class="col-12 bg-dark text-white text-center border rounded">Weather Dashboard</h1>
             </div>
             <!-- Search Area -->
             <div class="row">
-                <div class="col-4 border border-dark" id="search-container">
+                <div class="col-4 border border-dark rounded" id="search-container">
                     <label for="city">Search for a city:</label>
                     <form>
                         <div class="form-group">
                             <div class="d-inline">
-                                <input type="text" class="search-box" id="city">
+                                <input type="text" class="search-box border rounded mw-100" id="city">
                                 <button class="btn btn-primary"><span class="oi oi-magnifying-glass"></span></button>
                             </div>
                         </div>
@@ -43,10 +39,10 @@
                     </div>
                 </div>
                 <!-- Display area -->
-                <div class="col-8 border border-dark" id="display-container">
+                <div class="col-8 border rounded" id="display-container">
                     <!-- Row for current weather -->
-                    <div class="row">
-                        <div class="col-12">
+                    <div class="row ">
+                        <div class="col-12 ">
                             <div class="d-flex city-wrapper">
                             <p class="city-info" id="name"></p>
                                 <span class="city-info" id="date"></span>
@@ -60,8 +56,8 @@
                     </div>
                     <!-- Row for 5-day forcast -->
                      <h3 class="row hidden" id="five-day-header">5-Day Forecast:</h3>
-                    <div class="row" id="five-day">
-                        <!-- days created dynamically? -->
+                    <div class="row d-flex flex-wrap justify-content-between" id="five-day">
+                        <!-- days created dynamically -->
                     </div>
 
                 </div>
